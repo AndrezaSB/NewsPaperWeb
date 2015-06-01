@@ -1,0 +1,25 @@
+<persistence xmlns="http://java.sun.com/xml/ns/persistence"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence
+http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
+	version="2.0">
+	
+	<persistence-unit name="andreza_brito_jornal">
+	
+		<provider>org.hibernate.ejb.HibernatePersistence</provider>
+		<class>br.ufc.model.Classificado</class>
+		<class>br.ufc.model.Comentario</class>
+		<class>br.ufc.model.Noticia</class>
+		<class>br.ufc.model.Role</class>
+		<class>br.ufc.model.Secao</class>
+		<class>br.ufc.model.Usuario</class>
+		
+		<properties>
+			<!-- SEM as propriedades URL, login, senha e driver -->
+			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5InnoDBDialect" />
+			<property name="hibernate.show_sql" value="true" />
+			<property name="hibernate.format_sql" value="true" />
+			<property name="hibernate.hbm2ddl.auto" value="update" />
+		</properties>
+	</persistence-unit>
+</persistence>
