@@ -1,10 +1,12 @@
 package br.ufc.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -14,6 +16,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
 
 @Entity
 @Table(name="usuario")
@@ -37,11 +40,11 @@ public class Usuario {
 	@Column(name = "email", nullable = false, length = 50)
 	private String email;
 	
-	@ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE })
+	@ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE}, fetch=FetchType.EAGER)
 	@JoinTable(name = "usuario_role", joinColumns = @JoinColumn(name = "id_usuario" , 
         referencedColumnName="id_usuario"), inverseJoinColumns = @JoinColumn(name="id_role", 
         referencedColumnName="id_role"))
-	private List<Role> funcoes;
+	private List<Role> funcoes = new ArrayList<Role>();
 	
 	@OneToMany(mappedBy = "usuario", targetEntity = Noticia.class)
 	private List<Noticia> noticias;
@@ -55,7 +58,7 @@ public class Usuario {
 	
 	//Constructors
 	public Usuario() {
-
+		
 	}
 
 	public Usuario(Long id, String login, String senha, String nome,
@@ -65,6 +68,7 @@ public class Usuario {
 		this.senha = senha;
 		this.nome = nome;
 		this.email = email;
+		this.funcoes = new ArrayList<Role>();
 		this.funcoes.add(role);
 	}
 
@@ -114,9 +118,20 @@ public class Usuario {
 	}
 
 	public void setFuncoes(Role funcao) {
-		this.funcoes.add(funcao);
+		//this.funcoes.add(funcao);	
+		boolean repetido = false;
+		
+		for(Role r: this.funcoes){
+			if(r.equals(funcao)){
+				repetido = true;
+			}
+		}
+		
+		if(!repetido){
+			this.funcoes.add(funcao);	
+		}
 	}
-
+	
 	//ToString to test 
 	public String toString() {
 		return "Usuario [id=" + id + ", login=" + login + ", senha=" + senha

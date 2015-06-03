@@ -12,6 +12,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
 @Table (name="noticia")
@@ -33,10 +34,10 @@ public class Noticia {
 	@Column(name = "texto", nullable = false, length = 500)
 	private String texto;
 	
-	@Column(name = "dataNoticia", nullable = false)
+	@Column(name = "data_noticia", nullable = false)
 	private Date dataNoticia;
 	
-	@ManyToOne(optional=false)
+	@ManyToOne(optional=true)
 	@JoinColumn(name="id_usuario",referencedColumnName="id_usuario")
 	private Usuario usuario;
 
@@ -46,6 +47,7 @@ public class Noticia {
 	
 	@OneToMany(mappedBy = "noticia", targetEntity = Comentario.class)
 	private List<Comentario> comentarios;
+	
 	
 	//Constructors
 	public Noticia(){
@@ -125,4 +127,5 @@ public class Noticia {
 				+ subtitulo + ", texto=" + texto + ", usuario=" + usuario
 				+ ", dataNoticia=" + dataNoticia + ", secao=" + secao + "]";
 	}
+
 }

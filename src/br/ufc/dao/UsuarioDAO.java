@@ -4,9 +4,11 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 import org.springframework.stereotype.Repository;
 
+import br.ufc.model.Role;
 import br.ufc.model.Usuario;
 
 @Repository
@@ -41,7 +43,14 @@ public class UsuarioDAO implements IUsuarioDAO {
 	}
 
 	public Usuario buscarUsuarioLogin(String login) {
-		Usuario usuario = this.manager.find(Usuario.class, login);
-		return usuario;
+		Query q = this.manager.createQuery("select u from Usuario u where login = :login");
+		q.setParameter("login", login);
+		try {
+			Usuario u = (Usuario)q.getSingleResult();
+			return u;
+		} catch (Exception e) {
+			return null;
+		}
+		
 	}
 }

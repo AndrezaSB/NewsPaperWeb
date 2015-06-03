@@ -1,6 +1,5 @@
 package br.ufc.controller;
 
-
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,11 +21,12 @@ public class UsuarioController {
 	private IUsuarioDAO uDAO;
 	@Autowired
 	private IRoleDAO rDAO;
+	Role r;
 	
 	
 	@RequestMapping("leitorFormulario")
 	public String usuarioFormulario(){
-		return "usuario/inserir_leitor";
+		return "usuario/leitor/inserir_leitor";
 	}
 	
 	@RequestMapping("adicionarUsuario")
@@ -37,7 +37,6 @@ public class UsuarioController {
 	
 	@RequestMapping("adicionarLeitor")
 	public String adicionarLeitor(Usuario usuario){
-		Role r;
 		r = rDAO.buscarRoleNome("Leitor");
 		usuario.setFuncoes(r);
 		uDAO.inserir(usuario);
@@ -49,10 +48,27 @@ public class UsuarioController {
 		model.addAttribute("usuarios", this.uDAO.listar());
 		return "usuario/listar_usuarios";
 	}
-		
+	
+	@RequestMapping("contratarJornalista")
+	public String contratarJornalista(Usuario usuario){
+		usuario = uDAO.buscarUsuario(usuario.getId());
+		r = rDAO.buscarRoleNome("Jornalista");
+		usuario.setFuncoes(r);
+		this.uDAO.atualizar(usuario);
+		return "redirect:listarUsuarios";
+	}
+	
+	@RequestMapping("contratarEditor")
+	public String contratarEditor(Usuario usuario){
+		usuario = uDAO.buscarUsuario(usuario.getId());
+		r = rDAO.buscarRoleNome("Editor");
+		usuario.setFuncoes(r);
+		this.uDAO.atualizar(usuario);
+		return "redirect:listarUsuarios";
+	}
+	
 	@RequestMapping("removerUsuario")
 	public String remover(Usuario usuario){
-		
 		this.uDAO.remover(usuario);
 		return "redirect:listarUsuarios";
 	}
@@ -85,7 +101,7 @@ public class UsuarioController {
 		//lógica do login
 		
 		if(usuario==null || usuario.getLogin()==null || usuario.getLogin()==""){
-			return "redirect:loginFormulairo";
+			return "redirect:loginFormulario";
 		}
 		
 		Usuario usuBanco = this.uDAO.buscarUsuarioLogin(usuario.getLogin());

@@ -26,7 +26,7 @@ public class Secao {
 	
 	@Column(name = "descricao", nullable = false, length = 100) 
 	private String descricao;
-
+	
 	@OneToMany(mappedBy="secao",targetEntity=Noticia.class,fetch=FetchType.EAGER)
 	private List<Noticia> noticias;
 	
@@ -40,6 +40,11 @@ public class Secao {
 		this.descricao = descricao;
 	}
 	
+	
+	public List<Noticia> getNoticias() {
+		return noticias;
+	}
+
 	//Getters and Setters
 	public Long getId() {
 		return id;

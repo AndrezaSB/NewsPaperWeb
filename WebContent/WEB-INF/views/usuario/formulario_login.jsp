@@ -6,45 +6,34 @@
 
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.css" >
 	<title>Global News</title>
 </head>
 
 <body>
-		<form action="usuarioLogin" method="POST" >
+	<script src="bootstrap/js/bootstrap.js" ></script>
+		<form class="well" action="usuarioLogin" method="POST">
 		<fieldset>
 			<h3 align="center">Login Global News</h3>	
 			<table cellspacing="10" align="center">
 				<tr>
 					<td>Login: </td>
 					<td>
-						<input type="text" name="login" maxlength="20"/>
+						<input type="text" name="login" maxlength="20" class="span3" placeholder="Digite o seu login..."/>
 						<form:errors path="usuario.login" cssStyle="color:red"/>
 					</td>
 				</tr>
 				<tr>
 					<td>Senha: </td>
 					<td>
-						<input type="password" name="senha" maxlength="20"/>
+						<input type="password" name="senha" maxlength="20" class="span3" placeholder="Digite sua senha..."/>
 						<form:errors path="usuario.senha" cssStyle="color:red"/>
 					</td>
 				</tr>
-				<tr>
-					<td>
-						<label for="role">Tipo de Conta: </label>
-					</td>
-					<td align="left">
-					    <select name="role"> 
-					    <option value="leitor">Leitor</option> 
-					    <option value="jornalista">Jornalista</option> 
-					    <option value="editor">Editor</option> 
-					    <option value="administrador">Administrador</option> 
-					     </select>
-   					</td>
-				</tr>
-				<tr>
+				<tr align="center">
 					<td colspan="2">
-						<input type="submit" value="Submeter" />
-						<input type="reset" value="Limpar" />
+						<input  class="btn btn-primary" type="submit" value="Submeter" />
+						<input class="btn" type="reset" value="Limpar" />
 					</td>
 				</tr>
 				

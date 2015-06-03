@@ -16,22 +16,22 @@ public class ComentarioDAO implements IComentarioDAO {
 	@PersistenceContext
 	private EntityManager manager;
 	
-	public void inserir(Comentario comentario) {
+	public void inserirComentario(Comentario comentario) {
 		this.manager.persist(comentario);
 		
 	}
 
-	public void remover(Comentario comentario) {
+	public void removerComentario(Comentario comentario) {
 		this.manager.remove(this.manager.getReference(Comentario.class, comentario.getId()));
 		
 	}
 
-	public void atualizar(Comentario comentario) {
+	public void atualizarComentario(Comentario comentario) {
 		this.manager.merge(comentario);
 		
 	}
 
-	public List<Comentario> listar() {
+	public List<Comentario> listarComentarios() {
 		List<Comentario> comentarios = this.manager.createQuery("select c from Comentario c").getResultList();
 		return comentarios;
 	}

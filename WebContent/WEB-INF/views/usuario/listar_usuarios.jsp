@@ -18,7 +18,8 @@
 			<td><b>Login</b></td>
 			<td><b>Nome Completo</b></td>
 			<td><b>Email</b></td>
-			<td><b>Jornalista</b></td>
+			<td><b>Contratar Jornalista</b></td>
+			<td><b>Contratar Editor</b></td>
 			<td><b>Atualizar</b></td>
 			<td><b>Excluir</b></td>
 		</tr>
@@ -50,8 +51,8 @@
 						<td><b>Não Cadastrado!</b></td>
 					</c:otherwise>
 				</c:choose>
-				<!-- falta implementar o contratarJornalista -->
-				<td><a href="contratarJornalista?id=${usuario.id}">Contratar</a>
+				<td><a href="contratarJornalista?id=${usuario.id}">Contratar Jornalista</a>
+				<td><a href="contratarEditor?id=${usuario.id}">Contratar Editor</a>
 				<td><a href="atualizarUsuario?id=${usuario.id}">Atualizar</a></td>
 				<td><a href="removerUsuario?id=${usuario.id}">Excluir</a></td>	
 			</tr>

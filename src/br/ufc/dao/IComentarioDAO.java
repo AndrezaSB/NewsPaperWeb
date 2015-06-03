@@ -6,10 +6,10 @@ import br.ufc.model.Comentario;
 
 public interface IComentarioDAO{
 
-	public void inserir(Comentario comentario);
-	public void remover(Comentario comentario);
-	public void atualizar(Comentario comentario);
-	public List<Comentario> listar();
+	public void inserirComentario(Comentario comentario);
+	public void removerComentario(Comentario comentario);
+	public void atualizarComentario(Comentario comentario);
+	public List<Comentario> listarComentarios();
 	public Comentario buscarComentario(Long id);
 	
 }

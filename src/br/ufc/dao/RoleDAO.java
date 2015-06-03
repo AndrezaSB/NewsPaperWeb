@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 import org.springframework.stereotype.Repository;
 
@@ -41,7 +42,11 @@ public class RoleDAO implements IRoleDAO{
 	}
 	
 	public Role buscarRoleNome(String role) {
-		Role r = this.manager.find(Role.class, role);
+		Query q = this.manager.createQuery("select r from Role r where role= :role");
+		q.setParameter("role", role);
+		Role r = (Role)q.getSingleResult();
 		return r;
 	}
 }
+
+

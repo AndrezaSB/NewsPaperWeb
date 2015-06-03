@@ -8,7 +8,6 @@ import javax.persistence.PersistenceContext;
 import org.springframework.stereotype.Repository;
 
 import br.ufc.model.Noticia;
-import br.ufc.model.Usuario;
 
 @Repository
 public class NoticiaDAO implements INoticiaDAO{

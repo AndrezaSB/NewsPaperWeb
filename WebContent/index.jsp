@@ -8,10 +8,13 @@
 
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.css" >
 	<title>Global News</title>
 </head>
 
 <body>
+
+	<script src="bootstrap/js/bootstrap.js" ></script>
 	<c:import url="cabecalho.jsp"></c:import><br/>
 	
 	<a href="leitorFormulario">Cadastre-se</a><br/>

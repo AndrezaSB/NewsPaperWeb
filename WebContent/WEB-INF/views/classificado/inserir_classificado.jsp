@@ -14,12 +14,12 @@
 <body>
 	<form action="adicionarClassificado" method="POST" >
 		<fieldset>
-			<h3 align="center">Cadastro Global News</h3>	
+			<h3 align="center">Cadastro classificado Global News</h3>	
 			<table cellspacing="10" align="center">
 				<tr>
 					<td>Título: </td>
 					<td>
-						<input type="text" name="titulo" />
+						<input type="text" name="titulo" maxlength="50" size="50"/>
 						<form:errors path="classificado.titulo" cssStyle="color:red"/>
 					</td>
 				</tr>
@@ -37,6 +37,14 @@
 						<form:errors path="classificado.preco" cssStyle="color:red"/>
 					</td>
 				</tr>
+				<tr>
+					<td>Telefone: </td>
+					<td>
+						<input type="text" name="telefone" />
+						<form:errors path="classificado.telefone" cssStyle="color:red"/>
+					</td>
+				</tr>
+				
 				<tr>
 					<td colspan="2">
 						<input type="submit" value="Submeter" />

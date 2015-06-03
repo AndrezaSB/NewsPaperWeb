@@ -6,10 +6,10 @@ import br.ufc.model.Classificado;
 
 public interface IClassificadoDAO {
 	
-	public void inserir(Classificado classificado);
-	public void remover(Classificado classificado);
-	public void atualizar(Classificado classificado);
-	public List<Classificado> listar();
+	public void inserirClassificado(Classificado classificado);
+	public void removerClassificado(Classificado classificado);
+	public void atualizarClassificado(Classificado classificado);
+	public List<Classificado> listarClassificados();
 	public Classificado buscarClassificado(Long id);
 	
 }

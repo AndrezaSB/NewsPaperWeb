@@ -43,6 +43,7 @@
 						<form:errors path="usuario.email" cssStyle="color:red"/>
 					</td>
 				</tr>
+				
 				<tr>
 					<td colspan="2">
 						<input type="submit" value="Submeter" />

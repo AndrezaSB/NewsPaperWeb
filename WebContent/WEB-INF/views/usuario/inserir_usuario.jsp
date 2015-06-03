@@ -7,11 +7,13 @@
 
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.css" >
 	<title>Global News</title>
 </head>
 
 <body>
-	<form action="adicionarUsuario" method="POST" >
+	<script src="bootstrap/js/bootstrap.js" ></script>
+		<form class="well" action="adicionarUsuario" method="POST" >
 		<fieldset>
 			<h3 align="center">Cadastro Global News</h3>	
 			<table cellspacing="10" align="center">

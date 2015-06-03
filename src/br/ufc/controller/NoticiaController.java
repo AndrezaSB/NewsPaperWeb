@@ -7,7 +7,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import br.ufc.dao.INoticiaDAO;
+import br.ufc.dao.ISecaoDAO;
 import br.ufc.model.Noticia;
+import br.ufc.model.Secao;
 
 @Transactional
 @Controller
@@ -15,13 +17,21 @@ public class NoticiaController {
 
 	@Autowired
 	private INoticiaDAO nDAO;
+	@Autowired
+	private ISecaoDAO sDAO;
+	
+	private Secao s;
 	
 	@RequestMapping("noticiaFormulario")
-	public String noticiaFormulario(){
+	public String noticiaFormulario(Model model){
+		model.addAttribute("secoes", this.sDAO.listarSecoes());
 		return "noticia/inserir_noticia";
 	}
+	
 	@RequestMapping("adicionarNoticia")
 	public String adicionarNoticia(Noticia noticia){
+		s = sDAO.buscarSecao(noticia.getSecao().getId());
+		noticia.setSecao(s);
 		nDAO.inserirNoticia(noticia);
 		return "redirect:listarNoticias";
 	}

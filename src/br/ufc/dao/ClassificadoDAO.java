@@ -15,22 +15,22 @@ public class ClassificadoDAO implements IClassificadoDAO{
 	@PersistenceContext
 	private EntityManager manager;
 	
-	public void inserir(Classificado classificado) {
+	public void inserirClassificado(Classificado classificado) {
 		this.manager.persist(classificado);
 		
 	}
 
-	public void remover(Classificado classificado) {
+	public void removerClassificado(Classificado classificado) {
 		this.manager.remove(this.manager.getReference(Classificado.class, classificado.getId()));
 		
 	}
 
-	public void atualizar(Classificado classificado) {
+	public void atualizarClassificado(Classificado classificado) {
 		this.manager.merge(classificado);
 		
 	}
 
-	public List<Classificado> listar() {
+	public List<Classificado> listarClassificados() {
 		List<Classificado> classificados = this.manager.createQuery("select c from Classificado c").getResultList();
 		return classificados;
 	}
